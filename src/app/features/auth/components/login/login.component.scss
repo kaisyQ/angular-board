@@ -1,0 +1,15 @@
+.login-form-wrapper {
+
+    margin: 0 auto;
+    max-width: 568px;
+    width: 100%;
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-control {
+        text-align: center;
+    }
+}

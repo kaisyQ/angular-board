@@ -1,0 +1,35 @@
+<div class="auth-page-wrapper">
+
+    <div class="auth-tabs-wrapper">
+        <nav mat-tab-nav-bar>
+
+            <a 
+                mat-tab-link 
+                routerLink="/auth/sign-up" 
+                routerLinkActive 
+                #signUpTab="routerLinkActive" 
+                [active]="signUpTab.isActive">
+                Sign up
+            </a>
+
+            <a
+                mat-tab-link
+                routerLink="/auth/sign-in"
+                routerLinkActive 
+                #singInTab="routerLinkActive"
+                [active]="singInTab.isActive"
+            >
+                Sing in
+            </a>
+
+        </nav>
+    </div>
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="auth-sign-in-message">
+        Already have an account | <a mat-flat-button routerLink="/auth/sign-in">Sign in</a>
+    </div>
+</div>
