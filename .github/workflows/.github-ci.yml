@@ -1,32 +1,21 @@
-name: Building and testing 
+name: Testing
 
 on:
   push:
-    branches: [ "master", "develop" ]
+    branches: [master, develop]
   pull_request:
-    branches: [ "master", "develop" ]
+    branches: [master, develop]
 
 jobs:
-  main:
-    name: Build application
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [21]
     steps:
-      - name: Checkout the source code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js $
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: $
-          cache: 'npm'
-          cache-dependency-path: package-lock.json
+          node-version: 21
 
-      - name: Install dependencies
-        run: npm ci
-      - name: Run application tests
-        run: npm run test:ci
-      - name: Build applcaition
-        run: npm run build
+      - run: npm ci
+      - run: export CHROME_BIN="C:\Program Files\Google\Chrome\Application\chrome.exe"
+      - run: npm run test --watch=false --no-progress
+      - run: npm run build
