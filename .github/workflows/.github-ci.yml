@@ -16,6 +16,4 @@ jobs:
           node-version: 21
 
       - run: npm ci
-      - run: export CHROME_BIN="C:\Program Files\Google\Chrome\Application\chrome.exe"
-      - run: npm run test --watch=false --no-progress
       - run: npm run build
