@@ -1,20 +1,20 @@
-<div class="login-form-wrapper">
+<div class="login-form-wrapper" (submit)="submit(email, password, repeatedPassword)">
     <form class="login-form">
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput />
+            <input type="email" matInput [(ngModel)]="email" [ngModelOptions]="{standalone: true}"/>
         </mat-form-field>
         <mat-form-field>
             <mat-label>
                 Password
             </mat-label>
-            <input matInput />
+            <input type="password" matInput [(ngModel)]="password" [ngModelOptions]="{standalone: true}"/>
         </mat-form-field>
         <mat-form-field>
             <mat-label>
                 Repeat password
             </mat-label>
-            <input matInput />
+            <input type="password" matInput [(ngModel)]="repeatedPassword" [ngModelOptions]="{standalone: true}"/>
         </mat-form-field>
         <div class="form-control">
             <button mat-stroked-button color="primary">Sign up</button>

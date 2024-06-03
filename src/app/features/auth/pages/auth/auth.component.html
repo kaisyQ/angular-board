@@ -1,7 +1,7 @@
 <div class="auth-page-wrapper">
 
     <div class="auth-tabs-wrapper">
-        <nav mat-tab-nav-bar>
+        <nav mat-tab-nav-bar [tabPanel]="tabPanel">
 
             <a 
                 mat-tab-link 
@@ -23,6 +23,7 @@
             </a>
 
         </nav>
+        <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
     </div>
 
     <div>
