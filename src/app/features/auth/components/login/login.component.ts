@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
+import type { WritableSignal } from '@angular/core';
 
 @Component({
     selector: 'app-auth-login',
@@ -15,15 +16,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
   
-    public loading = false;
-    public email = '';
-    public password = '';
+    public loading = signal(false);
+    public email = signal('');
+    public password = signal('');
     
     constructor(
         private authService: AuthService
     ) {}
 
-    public submit(email: string, password: string) {
-        this.authService.login(email, password);
+    public submit(email: WritableSignal<string>, password: WritableSignal<string>) {
+
+        this.authService.login(email(), password());
     }
 }

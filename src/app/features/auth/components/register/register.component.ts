@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,23 +15,21 @@ import { FormsModule } from '@angular/forms';
     providers: [AuthService]
 })
 export class RegisterComponent {
-    public loading = false;
+    public loading = signal(false);
 
-    public email = '';
-    public password = '';
-    public repeatedPassword = '';
+    public email = signal('');
+    public password = signal('');
+    public repeatedPassword = signal('');
 
 
     constructor(
         private authService: AuthService
-    ) {
+    ) {}
 
-    }
-
-    public submit(email: string, password: string, repeatedPassword: string) {
+    public submit(email: WritableSignal<string>, password: WritableSignal<string>, repeatedPassword: WritableSignal<string>) {
 
         this.authService.register(
-            new RegisterDto(email, password, repeatedPassword)
+            new RegisterDto(email(), password(), repeatedPassword())
         );
     }
 }
